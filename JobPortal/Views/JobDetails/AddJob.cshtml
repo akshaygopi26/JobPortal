@@ -1,0 +1,58 @@
+﻿@model JobPortal.Models.JobDetails
+@{
+    ViewData["Title"] = "Add new job";
+}
+
+<div class="row">
+    @if (TempData["validationmessage"] != null)
+    {
+        string alertType = "alert alert-" + TempData["alertType"];
+        <div class="@alertType">
+            <strong>Alert!</strong> @TempData["validationmessage"]
+        </div>
+    }
+</div>
+<h2 class="text-center">Add a new job</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form role="form" asp-action="Signup" asp-controller="RecruiterDetails" method="post">
+
+                <div class="form-group">
+                    <label for="Name">Company Name</label>
+                    <input type="text" name="CompanyName" asp-for="CompanyName" class="form-control input-sm" autocomplete="off" data-val="true" data-val-required="The Mobile field is required." placeholder="Company Name">
+                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Position"></label>
+                    <input type="text" name="Position" data-val="true" autocomplete="off" data-val-required="The Position field is required." asp-for="Position" class="form-control input-sm" placeholder="Position">
+                    <span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Eligibility">Eligibility</label>
+                    <input type="text" name="Eligibility" asp-for="Eligibility" autocomplete="off" data-val="true" class="form-control input-sm" data-val-required="The Eligibility field is required." placeholder="Eligibility">
+                    <span asp-validation-for="Eligibility" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="SkillsRequired">Skills Required</label>
+                    <input type="text" name="SkillsRequired" asp-for="SkillsRequired" autocomplete="off" class="form-control input-sm" data-val="true" data-val-required="The SkillsRequired field is required." placeholder="Skills Required">
+                    <span asp-validation-for="SkillsRequired" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="MinimumExperienceRequired">Minimum Experience Required</label>
+                    <input type="text" name="MinimumExperienceRequired" asp-for="MinimumExperienceRequired" autocomplete="off" class="form-control input-sm" placeholder="Minimum Experience Required">
+                    <span asp-validation-for="MinimumExperienceRequired" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <label asp-for="PostedRecruiterId" class="control-label">Posted Recruiter Id</label>
+                    <select asp-for="PostedRecruiterId" class="form-control" asp-items="ViewBag.PostedRecruiterId"></select>
+                </div>*@
+
+                <input type="submit" value="Add" class="btn btn-info btn-block">
+                <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
+            </form>
+        </div>
+    </div>
+
+</div>

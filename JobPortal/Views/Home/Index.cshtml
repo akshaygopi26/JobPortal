@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">JOB PORTAL</h1>
+</div>
+
+<input type="submit" value="Sign Up (Recruiters)" class="btn btn-primary" onclick="location.href='@Url.Action("SignUp", "RecruiterDetails")'">
+<input type="submit" value="Sign Up (Users)" class="btn btn-primary" onclick="location.href='@Url.Action("Signup", "ApplicantDetails")'">
+<input type="submit" value="Log In (Recruiters)" class="btn btn-primary" onclick="location.href='@Url.Action("LogIn", "RecruiterDetails")'">
+<input type="submit" value="Log In (Users)" class="btn btn-primary" onclick="location.href='@Url.Action("LogIn", "ApplicantDetails")'">

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<JobPortal.Models.JobDetails>
+
+@{
+    ViewData["Title"] = "Job Details";
+}
+
+<h1>Job Details</h1>
+
+<p>
+    <a asp-controller="Jobs" asp-action="AvailableJobs">Back to the list</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Eligibility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillsRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumExperienceRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostedRecruiterId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eligibility)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillsRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumExperienceRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostedRecruiterId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.JobId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.JobId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.JobId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <input type="submit" value="Add a new job" class="btn btn-primary" onclick="location.href='@Url.Action("AddJob", "JobDetails")'">
+
+</table>
