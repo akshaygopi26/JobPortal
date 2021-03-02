@@ -1,0 +1,29 @@
+﻿@model JobPortal.Models.ApplicantJobsRelation
+
+@{
+    ViewData["Title"] = "Apply for Job";
+}
+
+<div class="text-center">
+    <h2 class="display-4">JOB PORTAL</h2>
+</div>
+<div class="text-center">
+    <div class="p-3 mb-2 bg-dark text-white">Apply for a Job</div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddRating">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ApplicantId" class="control-label">Movie</label>
+                <select asp-for="ApplicantId" class="form-control" asp-items="ViewBag.ApplicantId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobId" class="control-label">Job Id</label>
+                <select asp-for="JobId" class="form-control" asp-items="ViewBag.JobId"></select>
+            </div>
+            <input type="submit" value="Add Rating" class="btn btn-info btn-block">
+            <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
+        </form>
+    </div>
+</div>

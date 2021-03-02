@@ -127,21 +127,21 @@ namespace JobPortal.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("ViewJobs", "JobDetails");
+                    return RedirectToAction("ViewJobsRecruiter", "JobDetails");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+
             }
 
             return View(model);
         }
 
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogoutAsync()
         {
-            HttpContext.Session.Clear();
-            return View("LogIn");
+            await _signinManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
-
 
 
 

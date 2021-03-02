@@ -1,0 +1,62 @@
+﻿@model IEnumerable<JobPortal.Models.JobDetails>
+
+@{
+    ViewData["Title"] = "Job Details";
+}
+
+<h1>Job Details</h1>
+
+<p>
+    <a asp-controller="QualificationDetails" asp-action="Edit">Edit Qualification Details</a>
+    <a asp-controller="Jobs" asp-action="AvailableJobs">Back to the list</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Eligibility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillsRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumExperienceRequired)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eligibility)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillsRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumExperienceRequired)
+                </td>
+                <td>
+                    <a asp-controller="ApplicantJobsRelation" asp-action="ApplyJobApplicant" asp-route-id="@item.JobId" >Apply for this Job</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<a asp-controller="ApplicantJobsRelation" asp-action="ApplyJobApplicant">Apply for this Job</a>*@
+@*//asp-route-id="@item.JobId"*@

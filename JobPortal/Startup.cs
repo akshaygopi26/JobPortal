@@ -31,6 +31,15 @@ namespace JobPortal
             services.AddDbContext<JobPortalContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("JobPortalContext")));
 
+            services.AddSession();
+
+            _ = services.AddSession(options =>
+            {
+                //options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
+
+            });
+
             services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<JobPortalContext>();
 
@@ -55,6 +64,14 @@ namespace JobPortal
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
+
+            app.UseAuthentication();
+
+          
+
+            
 
             app.UseEndpoints(endpoints =>
             {

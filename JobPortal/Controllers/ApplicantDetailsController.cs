@@ -94,13 +94,19 @@ namespace JobPortal.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ViewJobsApplicant", "JobDetails");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
 
             return View(model);
+        }
+
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await _signinManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
     }
